@@ -1,0 +1,12 @@
+{
+  "name": "nitlix-metagen",
+  "version": "1.0.1",
+  "description": "🚀 A brand new way automated of generating vital meta tags in your Next.JS app, with provisional defaults. Used in NitlixNextTemplate.",
+  "main": "./dist/index.js",
+  "keywords": ["nextjs", "metadata"],
+  "author": "nitlix",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
