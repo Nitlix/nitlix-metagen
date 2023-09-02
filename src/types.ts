@@ -1,66 +1,29 @@
-export type MetagenDefaults = {
-    title: string,
-    description: string,
-    site_name: string,
-    theme: {
-        color: string
+type TwitterType = {
+    creator?: {
+        id: string,
+        tag: string,
     },
-    language: string,
-    images: {
-        url: string,
-        width: number,
-        height: number,
-    }[],
-    type: string,
-    url: string,
-    keywords: string[],
-    twitter: {
-        creator: {
-            id: string,
-            tag: string,
-        },
-        site: string,
-        card: string,
-    },
-    robots: {
-        index: boolean,
-        follow: boolean,
-        nocache: boolean,
-        googleBot: {
-            index: boolean,
-            follow: boolean,
-            noimageindex: boolean,
-            'max-video-preview': number,
-            'max-image-preview': string,
-            'max-snippet': number,
-        },
-    },
+    site?: string,
+    card?: string,
 }
 
 export type MetagenOverrides = {
+    base?: string,
     title?: string,
     description?: string,
-    site_name?: string,
-    theme?: {
-        color?: string
-    },
-    language?: string,
+    siteName?: string,
+    themeColor?: string,
+    locale?: string,
     images?: {
         url: string,
         width: number,
         height: number,
+        twitter?: boolean,
     }[],
     type?: string,
     url?: string,
     keywords?: string[],    
-    twitter?: {
-        creator?: {
-            id: string,
-            tag: string,
-        },
-        site?: string,
-        card?: string,
-    },
+    twitter?: TwitterType,
     robots?: {
         index?: boolean,
         follow?: boolean,
@@ -76,43 +39,46 @@ export type MetagenOverrides = {
     },
 }
 
+
 export type MetagenData = {
+    metadataBase?: string,
     title: string,
     description: string,
+    keywords?: string[],
     openGraph: {
-        title: string,
-        description: string,
-        locale: string,
-        type: string,
-        images: {
+        title?: string,
+        description?: string,
+        locale?: string,
+        type?: string,
+        images?: {
             url: string,
             width: number,
             height: number,
         }[],
-        url: string,
-        site_name: string,
+        url?: string,
+        site_name?: string,
     },
-    themeColor: any,
-    robots: {
-        index: boolean,
-        follow: boolean,
-        nocache: boolean,
-        googleBot: {
-            index: boolean,
-            follow: boolean,
-            noimageindex: boolean,
-            'max-video-preview': number,
-            'max-image-preview': string,
-            'max-snippet': number,
+    themeColor?: any,
+    robots?: {
+        index?: boolean,
+        follow?: boolean,
+        nocache?: boolean,
+        googleBot?: {
+            index?: boolean,
+            follow?: boolean,
+            noimageindex?: boolean,
+            'max-video-preview'?: number,
+            'max-image-preview'?: string,
+            'max-snippet'?: number,
         },
     },
-    twitter: {
-        card: any,
-        title: string,
-        description: string,
-        siteId: any,
-        creatorId: any,
-        creator: any,
-        images: string[],
+    twitter?: {
+        card?: any,
+        title?: string,
+        description?: string,
+        siteId?: any,
+        creatorId?: any,
+        creator?: any,
+        images?: string[],
     },
 }

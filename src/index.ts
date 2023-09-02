@@ -1,6 +1,9 @@
-import { MetagenData, MetagenDefaults, MetagenOverrides } from "./types"
+import { MetagenData, MetagenOverrides } from "./types"
 import defaults from "./defaults"
-let currentDefaults = defaults;
+import defaults_of_defaults from './defaults';
+import constructor from "./constructor";
+
+let currentDefaults: MetagenOverrides = defaults;
 
 /**
  * @param {MetagenOverrides} overrides - Overrides for the default metagen data.
@@ -9,58 +12,15 @@ let currentDefaults = defaults;
  */
 export function metaGen(overrides: MetagenOverrides={}): MetagenData{
     const data = {
+        ...defaults_of_defaults,
         ...currentDefaults,
         ...overrides
     }
 
-    if (!data.twitter.creator){
-        data.twitter.creator = {
-            id: "1334566862479380480",
-            tag: "@nitlixis",
-        }
-    }
-
-
-    return {
-        title: data.title,
-        description: data.description,
-        openGraph: {
-            title: data.title,
-            description: data.description,
-            locale: data.language,
-            type: data.type,
-            images: data.images,
-            url: data.url,
-            site_name: data.site_name,
-        },
-        themeColor: data.theme.color,
-        robots: {
-            index: false,
-            follow: true,
-            nocache: true,
-            googleBot: {
-                index: true,
-                follow: false,
-                noimageindex: true,
-                'max-video-preview': -1,
-                'max-image-preview': 'large',
-                'max-snippet': -1,
-            },
-        },
-        twitter: {
-            card: data.twitter.card,
-            title: data.title,
-            description: data.description,
-            siteId: data.twitter.site,
-            creator: data.twitter.creator.tag,
-            creatorId: data.twitter.creator.id,
-            images: data.images.map((image) => {
-                return image.url
-            }),
-        }
-    }
+    return constructor(data);
 }
 
-export function setDefaults(newDefaults: MetagenDefaults): void{
+
+export function setDefaults(newDefaults: MetagenOverrides): void{
     currentDefaults = newDefaults;
 }
