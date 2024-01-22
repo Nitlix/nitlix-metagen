@@ -1,6 +1,5 @@
 import { MetagenData, MetagenOverrides } from "./types";
 
-
 export default function constructor(data: MetagenOverrides): MetagenData {
     let constructor: any = {
         title: data.title,
@@ -16,11 +15,9 @@ export default function constructor(data: MetagenOverrides): MetagenData {
         constructor.metadataBase = data.base;
     }
 
-    
 
     (data.siteName && (constructor.openGraph.site_name = data.siteName));
     (data.locale && (constructor.openGraph.locale = data.locale));
-    (data.themeColor && (constructor.themeColor = data.themeColor));
     
     if (data.images){
         constructor.twitter = {

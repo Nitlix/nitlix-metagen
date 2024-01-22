@@ -12,7 +12,6 @@ export type MetagenOverrides = {
     title?: string,
     description?: string,
     siteName?: string,
-    themeColor?: string,
     locale?: string,
     images?: {
         url: string,
@@ -58,7 +57,6 @@ export type MetagenData = {
         url?: string,
         site_name?: string,
     },
-    themeColor?: any,
     robots?: {
         index?: boolean,
         follow?: boolean,
